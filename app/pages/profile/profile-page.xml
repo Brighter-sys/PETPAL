@@ -1,0 +1,26 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="Profile" class="bg-purple-600 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <Image src="{{ profileImage }}" class="h-32 w-32 rounded-full mx-auto" />
+            <Button text="Change Photo" tap="{{ onChangePhoto }}" class="bg-transparent text-purple-600" />
+            
+            <Label text="Personal Information" class="text-lg font-bold mt-4" />
+            <TextField text="{{ name }}" hint="Full Name" class="p-4 bg-white rounded-lg" />
+            <TextField text="{{ email }}" hint="Email" editable="false" class="p-4 bg-gray-100 rounded-lg" />
+            <TextField text="{{ phone }}" hint="Phone Number" class="p-4 bg-white rounded-lg" />
+            
+            <Label text="Preferences" class="text-lg font-bold mt-4" />
+            <GridLayout rows="auto" columns="*, *" class="space-x-2">
+                <SegmentedBar items="{{ petTypes }}" selectedIndex="{{ selectedPetType }}" col="0" />
+                <SegmentedBar items="{{ distances }}" selectedIndex="{{ selectedDistance }}" col="1" />
+            </GridLayout>
+            
+            <Button text="Save Changes" tap="{{ onSave }}" class="bg-purple-600 text-white p-4 rounded-lg" />
+            <Button text="Sign Out" tap="{{ onSignOut }}" class="bg-red-500 text-white p-4 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,30 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar class="bg-purple-600 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+        <GridLayout columns="auto, *, auto" width="100%">
+            <Image src="{{ matchedPet.imageUrl }}" width="40" height="40" class="rounded-full" col="0" />
+            <StackLayout col="1" class="ml-2">
+                <Label text="{{ matchedPet.name }}" class="font-bold text-white" />
+                <Label text="{{ matchedPet.seller.businessName }}" class="text-sm text-white opacity-80" />
+            </StackLayout>
+        </GridLayout>
+    </ActionBar>
+
+    <GridLayout rows="*, auto">
+        <ListView items="{{ messages }}" row="0" class="bg-gray-100">
+            <ListView.itemTemplate>
+                <GridLayout columns="*" class="p-2">
+                    <StackLayout class="{{ isCurrentUser ? 'ml-auto bg-purple-500 text-white' : 'mr-auto bg-white' }} p-3 rounded-xl max-w-[80%]">
+                        <Label text="{{ text }}" textWrap="true" />
+                        <Label text="{{ timestamp }}" class="text-xs opacity-70" />
+                    </StackLayout>
+                </GridLayout>
+            </ListView.itemTemplate>
+        </ListView>
+
+        <GridLayout row="1" columns="*, auto" class="p-2 bg-white border-t border-gray-200">
+            <TextField hint="Type a message..." text="{{ messageText }}" col="0" class="p-2" />
+            <Button text="Send" tap="{{ onSendMessage }}" col="1" class="bg-purple-600 text-white rounded-lg px-4 ml-2" />
+        </GridLayout>
+    </GridLayout>
+</Page>

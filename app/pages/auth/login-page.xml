@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="PetPal Login" class="bg-purple-600 text-white" />
+    
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <Image src="~/assets/logo.png" class="h-32 w-32 mx-auto" />
+            
+            <Label text="Welcome to PetPal" class="text-2xl font-bold text-center text-purple-600" />
+            
+            <TextField hint="Email" text="{{ email }}" keyboardType="email" class="p-4 bg-white rounded-lg" />
+            
+            <TextField hint="Password" text="{{ password }}" secure="true" class="p-4 bg-white rounded-lg" />
+            
+            <Button text="Login" tap="{{ onLogin }}" class="bg-purple-600 text-white p-4 rounded-lg" />
+            
+            <Button text="Sign in with Google" tap="{{ onGoogleSignIn }}" class="bg-white text-gray-700 p-4 rounded-lg border border-gray-300">
+                <FormattedString>
+                    <Span text="🔵 " />
+                    <Span text="🔴 " />
+                    <Span text="🟡 " />
+                    <Span text="🟢 " />
+                    <Span text="Sign in with Google" />
+                </FormattedString>
+            </Button>
+            
+            <StackLayout orientation="horizontal" class="justify-center">
+                <Label text="New to PetPal? " class="text-gray-600" />
+                <Label text="Register" tap="{{ onRegisterTap }}" class="text-purple-600" />
+            </StackLayout>
+            
+            <GridLayout rows="auto" columns="*, auto, *" class="my-4">
+                <StackLayout col="0" class="bg-gray-300 h-[1]" verticalAlignment="center" />
+                <Label col="1" text=" OR " class="text-gray-500 mx-2" />
+                <StackLayout col="2" class="bg-gray-300 h-[1]" verticalAlignment="center" />
+            </GridLayout>
+            
+            <Button text="Register as Buyer" tap="{{ onBuyerRegister }}" class="bg-blue-500 text-white p-4 rounded-lg" />
+            <Button text="Register as Seller" tap="{{ onSellerRegister }}" class="bg-green-500 text-white p-4 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

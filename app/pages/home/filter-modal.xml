@@ -1,0 +1,54 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" shownModally="onShownModally">
+    <GridLayout rows="auto, *">
+        <GridLayout rows="auto" columns="*, auto" class="p-4 bg-purple-600">
+            <Label text="Filter Pets" class="text-xl font-bold text-white" col="0" />
+            <Button text="✕" tap="{{ closeModal }}" class="text-white" col="1" />
+        </GridLayout>
+
+        <ScrollView row="1">
+            <StackLayout class="p-4 space-y-4">
+                <!-- Pet Type -->
+                <Label text="Pet Type" class="font-bold" />
+                <WrapLayout>
+                    <Button text="All" tap="{{ onTypeSelect }}" class="{{ selectedType === 'all' ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Dogs" tap="{{ onTypeSelect }}" class="{{ selectedType === 'dogs' ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Cats" tap="{{ onTypeSelect }}" class="{{ selectedType === 'cats' ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Birds" tap="{{ onTypeSelect }}" class="{{ selectedType === 'birds' ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Fish" tap="{{ onTypeSelect }}" class="{{ selectedType === 'fish' ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Small Pets" tap="{{ onTypeSelect }}" class="{{ selectedType === 'small' ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                </WrapLayout>
+
+                <!-- Age Range -->
+                <Label text="Age Range" class="font-bold" />
+                <GridLayout rows="auto" columns="*, *" class="space-x-2">
+                    <TextField hint="Min Age" text="{{ minAge }}" keyboardType="number" class="p-2 border rounded" col="0" />
+                    <TextField hint="Max Age" text="{{ maxAge }}" keyboardType="number" class="p-2 border rounded" col="1" />
+                </GridLayout>
+
+                <!-- Price Range -->
+                <Label text="Price Range ($)" class="font-bold" />
+                <GridLayout rows="auto" columns="*, *" class="space-x-2">
+                    <TextField hint="Min Price" text="{{ minPrice }}" keyboardType="number" class="p-2 border rounded" col="0" />
+                    <TextField hint="Max Price" text="{{ maxPrice }}" keyboardType="number" class="p-2 border rounded" col="1" />
+                </GridLayout>
+
+                <!-- Location -->
+                <Label text="Distance (km)" class="font-bold" />
+                <Slider value="{{ distance }}" minValue="1" maxValue="100" />
+                <Label text="{{ distance }} km" class="text-center text-gray-600" />
+
+                <!-- Special Tags -->
+                <Label text="Special Tags" class="font-bold" />
+                <WrapLayout>
+                    <Button text="Trained" tap="{{ onTagSelect }}" class="{{ selectedTags.includes('trained') ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="House-broken" tap="{{ onTagSelect }}" class="{{ selectedTags.includes('house-broken') ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Special Needs" tap="{{ onTagSelect }}" class="{{ selectedTags.includes('special-needs') ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                    <Button text="Vaccinated" tap="{{ onTagSelect }}" class="{{ selectedTags.includes('vaccinated') ? 'bg-purple-600 text-white' : 'bg-gray-200' }} m-1 px-4 py-2 rounded-full" />
+                </WrapLayout>
+
+                <Button text="Apply Filters" tap="{{ applyFilters }}" class="bg-purple-600 text-white p-4 rounded-lg mt-4" />
+                <Button text="Reset Filters" tap="{{ resetFilters }}" class="bg-gray-300 p-4 rounded-lg" />
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

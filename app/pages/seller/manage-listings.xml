@@ -1,0 +1,78 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="My Listings" class="bg-purple-600 text-white">
+        <ActionItem tap="{{ onAddPet }}" ios.position="right" android.position="actionBar">
+            <Label text="+" class="text-2xl font-bold" />
+        </ActionItem>
+    </ActionBar>
+
+    <GridLayout rows="auto, *">
+        <TabStrip row="0" selectedIndex="{{ selectedTabIndex }}">
+            <TabStripItem>
+                <Label text="Active" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Pending" />
+            </TabStripItem>
+            <TabStripItem>
+                <Label text="Sold" />
+            </TabStripItem>
+        </TabStrip>
+
+        <TabView row="1" selectedIndex="{{ selectedTabIndex }}">
+            <!-- Active Listings -->
+            <TabViewItem>
+                <GridLayout>
+                    <ListView items="{{ activeListings }}" class="bg-gray-100">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" class="p-4 bg-white m-2 rounded-lg">
+                                <Image src="{{ imageUrl }}" width="80" height="80" class="rounded-lg" col="0" />
+                                <StackLayout col="1" class="ml-2">
+                                    <Label text="{{ name }}" class="font-bold" />
+                                    <Label text="{{ price }}" class="text-purple-600" />
+                                    <Label text="{{ interestedCount }} interested" class="text-sm text-gray-600" />
+                                </StackLayout>
+                                <Button text="⋮" tap="{{ $parent.onListingOptions }}" class="text-xl" col="2" />
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </GridLayout>
+            </TabViewItem>
+
+            <!-- Pending Listings -->
+            <TabViewItem>
+                <GridLayout>
+                    <ListView items="{{ pendingListings }}" class="bg-gray-100">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" class="p-4 bg-white m-2 rounded-lg">
+                                <Image src="{{ imageUrl }}" width="80" height="80" class="rounded-lg" col="0" />
+                                <StackLayout col="1" class="ml-2">
+                                    <Label text="{{ name }}" class="font-bold" />
+                                    <Label text="{{ price }}" class="text-purple-600" />
+                                    <Label text="Pending Approval" class="text-sm text-orange-500" />
+                                </StackLayout>
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </GridLayout>
+            </TabViewItem>
+
+            <!-- Sold Listings -->
+            <TabViewItem>
+                <GridLayout>
+                    <ListView items="{{ soldListings }}" class="bg-gray-100">
+                        <ListView.itemTemplate>
+                            <GridLayout columns="auto, *, auto" class="p-4 bg-white m-2 rounded-lg opacity-70">
+                                <Image src="{{ imageUrl }}" width="80" height="80" class="rounded-lg" col="0" />
+                                <StackLayout col="1" class="ml-2">
+                                    <Label text="{{ name }}" class="font-bold" />
+                                    <Label text="{{ price }}" class="text-purple-600" />
+                                    <Label text="Sold on {{ soldDate }}" class="text-sm text-gray-600" />
+                                </StackLayout>
+                            </GridLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </GridLayout>
+            </TabViewItem>
+        </TabView>
+    </GridLayout>
+</Page>

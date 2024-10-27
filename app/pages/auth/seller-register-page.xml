@@ -1,0 +1,21 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-100">
+    <ActionBar title="Register as Seller" class="bg-green-500 text-white" />
+    
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <Label text="Create Seller Account" class="text-xl font-bold text-center" />
+            
+            <TextField hint="Business Name" text="{{ businessName }}" class="p-4 bg-white rounded-lg" />
+            <TextField hint="Email" text="{{ email }}" keyboardType="email" class="p-4 bg-white rounded-lg" />
+            <TextField hint="Password" text="{{ password }}" secure="true" class="p-4 bg-white rounded-lg" />
+            <TextField hint="Confirm Password" text="{{ confirmPassword }}" secure="true" class="p-4 bg-white rounded-lg" />
+            <TextField hint="Phone Number" text="{{ phone }}" keyboardType="phone" class="p-4 bg-white rounded-lg" />
+            <TextField hint="Business Address" text="{{ address }}" class="p-4 bg-white rounded-lg" />
+            <TextField hint="Business License Number" text="{{ licenseNumber }}" class="p-4 bg-white rounded-lg" />
+            
+            <Button text="Register" tap="{{ onRegister }}" class="bg-green-500 text-white p-4 rounded-lg" />
+            
+            <Label text="Already have an account?" tap="{{ onLoginTap }}" class="text-center text-green-500" />
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,46 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="PetPal" class="bg-purple-600 text-white">
+        <ActionItem tap="{{ onProfileTap }}" ios.position="right" android.position="actionBar">
+            <Label text="👤" class="text-2xl" />
+        </ActionItem>
+    </ActionBar>
+
+    <TabView selectedIndex="{{ selectedTabIndex }}" class="bg-gray-100">
+        <!-- Discover Tab -->
+        <TabViewItem title="Discover" class="h-full">
+            <GridLayout>
+                <AbsoluteLayout id="cardStack" class="h-full">
+                    <ns:PetCard repeat="{{ visiblePets }}" left="{{ left }}" top="{{ top }}" 
+                        class="w-[90%] h-[70%] bg-white rounded-xl shadow-xl m-4"
+                        petData="{{ $value }}"
+                        swipeLeft="{{ onSwipeLeft }}"
+                        swipeRight="{{ onSwipeRight }}" />
+                </AbsoluteLayout>
+                
+                <GridLayout rows="auto" columns="*, *, *" class="p-4" verticalAlignment="bottom">
+                    <Button col="0" text="✖️" tap="{{ onReject }}" class="w-16 h-16 rounded-full bg-red-500 text-white" />
+                    <Button col="1" text="↩️" tap="{{ onUndo }}" class="w-12 h-12 rounded-full bg-yellow-500 text-white" />
+                    <Button col="2" text="❤️" tap="{{ onLike }}" class="w-16 h-16 rounded-full bg-green-500 text-white" />
+                </GridLayout>
+            </GridLayout>
+        </TabViewItem>
+
+        <!-- Matches Tab -->
+        <TabViewItem title="Matches">
+            <GridLayout>
+                <ListView items="{{ matches }}" class="bg-gray-100">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="auto, *" class="p-2 bg-white m-2 rounded-lg">
+                            <Image src="{{ imageUrl }}" width="80" height="80" class="rounded-lg" col="0" />
+                            <StackLayout col="1" class="ml-2">
+                                <Label text="{{ name }}" class="font-bold text-lg" />
+                                <Label text="{{ breed }}" class="text-gray-600" />
+                                <Button text="Chat" tap="{{ $parent.onChatTap }}" class="bg-purple-600 text-white rounded-lg px-4 py-2" />
+                            </StackLayout>
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </GridLayout>
+        </TabViewItem>
+    </TabView>
+</Page>
